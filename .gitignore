@@ -9,7 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
-.idea/
+.idea
 build/
 develop-eggs/
 dist/
