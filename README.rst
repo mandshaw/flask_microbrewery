@@ -21,7 +21,7 @@ Flask Restless Demo
 Features
 --------
 
-* TODO
+* Nothing...yet
 
 Credits
 ---------
