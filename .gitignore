@@ -20,7 +20,7 @@ lib64/
 parts/
 sdist/k
 var/
-*.egg-info/
+*.egg-info/K
 .installed.cfg
 *.egg
 .idea**
