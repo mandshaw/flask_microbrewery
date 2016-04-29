@@ -7,24 +7,28 @@ test_flask_microbrewrey
 
 Tests for `flask_microbrewrey` module.
 """
-
+import os
 import unittest
+import tempfile
 
-from flask_microbrewrey import flask_microbrewrey
+from flask_microbrewrey.app import app
 
 
 class TestFlask_microbrewrey(unittest.TestCase):
 
     def setUp(self):
-        pass
+        self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()
+        app.config['TESTING'] = True
+        self.app = app.test_client()
 
     def tearDown(self):
-        pass
+        os.close(self.db_fd)
+        os.unlink(app.config['DATABASE'])
 
     def test_000_something(self):
-        pass
+        response = self.app.get('/api/Beer')
+        self.assertEqual(1,1)
 
 
 if __name__ == '__main__':
-    import sys
-    sys.exit(unittest.main())
+    unittest.main()

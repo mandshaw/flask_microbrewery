@@ -15,7 +15,8 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'flask-restless'
+    'flask-restless',
+    'sqlalchemy-migrate'
 ]
 
 test_requirements = [
