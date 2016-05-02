@@ -1,10 +1,11 @@
 from flask import Flask
 from flask.ext.restless import APIManager
 from flask.ext.sqlalchemy import SQLAlchemy
+import config
 
 # Create the flash App and attach a SQLAlchemy db from the DB spec
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object(config)
 db = SQLAlchemy(app)
 
 # Define the models
