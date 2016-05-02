@@ -1,5 +1,5 @@
 from flask.ext.restless import APIManager
-from flask_microbrewrey.app.models import Beer
+from flask_microbrewery.app.models import Beer
 from app import app, db
 
 # Create the Flask-Restless API manager.

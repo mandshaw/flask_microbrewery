@@ -85,17 +85,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/flask_microbrewrey.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/flask_microbrewery.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/flask_microbrewrey.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/flask_microbrewery.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/flask_microbrewrey"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/flask_microbrewrey"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/flask_microbrewery"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/flask_microbrewery"
 	@echo "# devhelp"
 
 epub:

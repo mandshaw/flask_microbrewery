@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-test_flask_microbrewrey
+test_flask_microbrewery
 ----------------------------------
 
 Tests for `flask_microbrewery` module.
@@ -11,10 +11,10 @@ import os
 import unittest
 import tempfile
 
-from flask_microbrewrey.app import app
+from flask_microbrewery.app import app
 
 
-class TestFlask_microbrewrey(unittest.TestCase):
+class TestFlask_microbrewery(unittest.TestCase):
 
     def setUp(self):
         self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()

@@ -46,7 +46,7 @@ clean-test:
 	rm -fr htmlcov/
 
 lint:
-	flake8 flask_microbrewrey tests
+	flake8 flask_microbrewery tests
 
 test:
 	python setup.py test
@@ -55,15 +55,15 @@ test-all:
 	tox
 
 coverage:
-	coverage run --source flask_microbrewrey setup.py test
+	coverage run --source flask_microbrewery setup.py test
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
 docs:
-	rm -f docs/flask_microbrewrey.rst
+	rm -f docs/flask_microbrewery.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ flask_microbrewrey
+	sphinx-apidoc -o docs/ flask_microbrewery
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html

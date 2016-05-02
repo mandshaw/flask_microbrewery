@@ -115,9 +115,9 @@ if "%1" == "qthelp" (
 	echo.
 	echo.Build finished; now you can run "qcollectiongenerator" with the ^
 .qhcp project file in %BUILDDIR%/qthelp, like this:
-	echo.^> qcollectiongenerator %BUILDDIR%\qthelp\flask_microbrewrey.qhcp
+	echo.^> qcollectiongenerator %BUILDDIR%\qthelp\flask_microbrewery.qhcp
 	echo.To view the help file:
-	echo.^> assistant -collectionFile %BUILDDIR%\qthelp\flask_microbrewrey.ghc
+	echo.^> assistant -collectionFile %BUILDDIR%\qthelp\flask_microbrewery.ghc
 	goto end
 )
 
