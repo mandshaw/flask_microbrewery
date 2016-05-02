@@ -5,7 +5,7 @@
 test_flask_microbrewrey
 ----------------------------------
 
-Tests for `flask_microbrewrey` module.
+Tests for `flask_microbrewery` module.
 """
 import os
 import unittest

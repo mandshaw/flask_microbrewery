@@ -24,23 +24,23 @@ test_requirements = [
 ]
 
 setup(
-    name='flask_microbrewrey',
+    name='flask_microbrewery',
     version='1.0.0',
     description="Flask Restless Demo",
     long_description=readme + '\n\n' + history,
     author="Michael Shaw",
     author_email='michael.and.shaw@gmail.com',
-    url='https://github.com/mandshaw/flask_microbrewrey',
+    url='https://github.com/mandshaw/flask_microbrewery',
     packages=[
-        'flask_microbrewrey',
+        'flask_microbrewery',
     ],
-    package_dir={'flask_microbrewrey':
-                 'flask_microbrewrey'},
+    package_dir={'flask_microbrewery':
+                 'flask_microbrewery'},
     include_package_data=True,
     install_requires=requirements,
     license="ISCL",
     zip_safe=False,
-    keywords='flask_microbrewrey',
+    keywords='flask_microbrewery',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

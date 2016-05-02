@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# flask_microbrewrey documentation build configuration file, created by
+# flask_microbrewery documentation build configuration file, created by
 # sphinx-quickstart on Tue Jul  9 22:26:36 2013.
 #
 # This file is execfile()d with the current directory set to its
@@ -208,7 +208,7 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto/manual]).
 latex_documents = [
-    ('index', 'flask_microbrewrey.tex',
+    ('index', 'flask_microbrewery.tex',
      u'Flask Microbrewrey Documentation',
      u'Michael Shaw', 'manual'),
 ]
@@ -239,7 +239,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'flask_microbrewrey',
+    ('index', 'flask_microbrewery',
      u'Flask Microbrewrey Documentation',
      [u'Michael Shaw'], 1)
 ]
@@ -254,10 +254,10 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'flask_microbrewrey',
+    ('index', 'flask_microbrewery',
      u'Flask Microbrewrey Documentation',
      u'Michael Shaw',
-     'flask_microbrewrey',
+     'flask_microbrewery',
      'One line description of project.',
      'Miscellaneous'),
 ]
