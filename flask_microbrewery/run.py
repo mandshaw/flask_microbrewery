@@ -41,7 +41,7 @@ manager = APIManager(app, flask_sqlalchemy_db=db)
 
 # Create the API endpoints from the DB Models
 # These will be available at /api/<tablename>
-manager.create_api(Beer, methods=['GET', 'POST', 'PUT', 'DELETE'])
+manager.create_api(Beer, methods=['GET', 'POST', 'PUT', 'DELETE'], exclude_columns=['reviews', 'type'])
 manager.create_api(Type, methods=['GET', 'POST', 'PUT', 'DELETE'])
 manager.create_api(Review, methods=['GET', 'POST', 'PUT', 'DELETE'])
 manager.create_api(Reviewer, methods=['GET', 'POST', 'PUT', 'DELETE'])
