@@ -1,6 +1,7 @@
 from flask import Flask
 from flask.ext.restless import APIManager
 from flask.ext.sqlalchemy import SQLAlchemy
+import datetime
 import config
 
 # Create the flash App and attach a SQLAlchemy db from the DB spec
@@ -39,11 +40,23 @@ db.create_all()
 # Create the Flask-Restless API manager.
 manager = APIManager(app, flask_sqlalchemy_db=db)
 
+# Add pre processor for Review Date
+def add_current_date(**kw):
+    kw['data']['date'] = 'CURRENT_TIMESTAMP'
+    return kw
+
 # Create the API endpoints from the DB Models
 # These will be available at /api/<tablename>
 manager.create_api(Beer, methods=['GET', 'POST', 'PUT', 'DELETE'])
 manager.create_api(Type, methods=['GET', 'POST', 'PUT', 'DELETE'])
-manager.create_api(Review, methods=['GET', 'POST', 'PUT', 'DELETE'])
+manager.create_api(
+    Review,
+    methods=['GET', 'POST', 'PUT', 'DELETE'],
+    preprocessors = {
+        'POST': [add_current_date],
+        'PUT_SINGLE': [add_current_date]
+    }
+)
 manager.create_api(Reviewer, methods=['GET', 'POST', 'PUT', 'DELETE'])
 
 # start the flask app
