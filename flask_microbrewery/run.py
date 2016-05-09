@@ -47,7 +47,7 @@ def add_current_date(**kw):
 
 # Create the API endpoints from the DB Models
 # These will be available at /api/<tablename>
-manager.create_api(Beer, methods=['GET', 'POST', 'PUT', 'DELETE'])
+manager.create_api(Beer, methods=['GET', 'POST', 'PUT', 'DELETE'], exclude_columns=['reviews', 'type'])
 manager.create_api(Type, methods=['GET', 'POST', 'PUT', 'DELETE'])
 manager.create_api(
     Review,
