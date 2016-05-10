@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, abort
 from flask.ext.restless import APIManager
 from flask.ext.sqlalchemy import SQLAlchemy
+import datetime
 import config
+from sqlalchemy.orm import validates
 
 # Create the flash App and attach a SQLAlchemy db from the DB spec
 app = Flask(__name__)
@@ -28,10 +30,17 @@ class Reviewer(db.Model):
 class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime)
-    stars = db.Column(db.Float)
+    stars = db.Column(db.Integer)
     comment = db.Column(db.Unicode)
     beer_id = db.Column(db.Integer, db.ForeignKey('beer.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('reviewer.id'))
+
+    @validates('stars')
+    def validate_name(self, key, stars):
+        if stars >= 1 and stars <=5:
+            return stars
+        else:
+            return abort(400, description='A review must have a star rating of between 1 and 5')
 
 # Create the DB
 db.create_all()
@@ -39,11 +48,23 @@ db.create_all()
 # Create the Flask-Restless API manager.
 manager = APIManager(app, flask_sqlalchemy_db=db)
 
+# Add pre processor for Review Date
+def add_current_date(**kw):
+    kw['data']['date'] = 'CURRENT_TIMESTAMP'
+    return kw
+
 # Create the API endpoints from the DB Models
 # These will be available at /api/<tablename>
-manager.create_api(Beer, methods=['GET', 'POST', 'PUT', 'DELETE'])
+manager.create_api(Beer, methods=['GET', 'POST', 'PUT', 'DELETE'], exclude_columns=['reviews', 'type'])
 manager.create_api(Type, methods=['GET', 'POST', 'PUT', 'DELETE'])
-manager.create_api(Review, methods=['GET', 'POST', 'PUT', 'DELETE'])
+manager.create_api(
+    Review,
+    methods=['GET', 'POST', 'PUT', 'DELETE'],
+    preprocessors = {
+        'POST': [add_current_date],
+        'PUT_SINGLE': [add_current_date]
+    }
+)
 manager.create_api(Reviewer, methods=['GET', 'POST', 'PUT', 'DELETE'])
 
 # start the flask app
