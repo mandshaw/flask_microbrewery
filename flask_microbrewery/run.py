@@ -1,8 +1,9 @@
-from flask import Flask
+from flask import Flask, abort
 from flask.ext.restless import APIManager
 from flask.ext.sqlalchemy import SQLAlchemy
 import datetime
 import config
+from sqlalchemy.orm import validates
 
 # Create the flash App and attach a SQLAlchemy db from the DB spec
 app = Flask(__name__)
@@ -29,10 +30,17 @@ class Reviewer(db.Model):
 class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime)
-    stars = db.Column(db.Float)
+    stars = db.Column(db.Integer)
     comment = db.Column(db.Unicode)
     beer_id = db.Column(db.Integer, db.ForeignKey('beer.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('reviewer.id'))
+
+    @validates('stars')
+    def validate_name(self, key, stars):
+        if stars >= 1 and stars <=5:
+            return stars
+        else:
+            return abort(400, description='A review must have a star rating of between 1 and 5')
 
 # Create the DB
 db.create_all()
